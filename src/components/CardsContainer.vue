@@ -58,4 +58,11 @@
     .hard {
         color: red;
     }
+
+    @media ( width < 768px ){
+        .flashcard-title {
+            font-size: 1.2rem;
+            color: wheat;
+        }
+    }
 </style>
