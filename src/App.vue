@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import HelloWorld from './components/HelloWorld.vue';
+  import CardsContainer from './components/CardsContainer.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@
     </a>
   </div>
   <HelloWorld msg="I am learning Vue" hidText="I am an invisible text, if you can see me, then you have clicked the magic button"/>
+  <CardsContainer/>
 </template>
 
 <style scoped>

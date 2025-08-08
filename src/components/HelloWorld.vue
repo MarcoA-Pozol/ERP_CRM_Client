@@ -3,16 +3,20 @@
 
   defineProps<{ msg: string, hidText: string }>();
 
-  const count = ref(0);
-  const isTextHid = ref(false);
+  const count = ref<number>(0);
+  const isTextHid = ref<boolean>(false);
+
+  const doILikeCoding = ref<boolean>(isTextHid.value);
 </script>
 
 <template>
   <h1 class="message">{{ msg }}</h1>
 
+  <h2>Do I like to code?: {{ doILikeCoding }}</h2>
+
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
-    <button type="button" @click="isTextHid=!isTextHid">toggle hid text visibility</button>
+    <button type="button" @click="isTextHid=!isTextHid;doILikeCoding=!doILikeCoding">toggle hid text visibility</button>
     <p v-show="isTextHid">{{ hidText }}</p>
     <code>
       <hr/>
