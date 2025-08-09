@@ -1,10 +1,12 @@
 <script setup lang="ts">
-  import HelloWorld from './components/HelloWorld.vue';
-  import CardsContainer from './components/CardsContainer.vue';
-  import DataFetch from './components/DataFetch.vue';
 </script>
 
 <template>
+  <nav>
+    <router-link to="/">Home</router-link>
+    <router-link to="/flashcards">Flashcards</router-link>
+    <router-link to="/dogImage">Dogs</router-link>
+  </nav>
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -13,9 +15,7 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="I am learning Vue" hidText="I am an invisible text, if you can see me, then you have clicked the magic button"/>
-  <DataFetch/>
-  <CardsContainer/>
+  <router-view />
 </template>
 
 <style scoped>
