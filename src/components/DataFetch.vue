@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import axios from "axios";
+import { useGlobalStore } from '../stores/global';
 
 const data = ref(null);
 const loading = ref(true);
 const error = ref<string | null>(null);
 const imageURL = ref("");
+const globalContext = useGlobalStore();
 
 onMounted(async () => {
   try {
@@ -21,6 +23,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <p>Notifications total count: {{ globalContext.notificationsCount }}</p>
   <div v-if="loading">Loading...</div>
   <div v-else-if="error">{{ error }}</div>
   <div class="data-container" v-else>

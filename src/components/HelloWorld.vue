@@ -1,10 +1,12 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-
+  import { useGlobalStore } from '../stores/global';
+  
   defineProps<{ msg: string, hidText: string }>();
 
   const count = ref<number>(0);
   const isTextHid = ref<boolean>(false);
+  const globalContext = useGlobalStore();
 
   const doILikeCoding = ref<boolean>(isTextHid.value);
 </script>
@@ -27,6 +29,12 @@
       System.out.println("Hello world!");
       <hr/>
     </code>
+  </div>
+
+  <div>
+    <p>Notifications count: {{ globalContext.notificationsCount }}</p>
+    <button @click="globalContext.increaseNotificationsCount">Increase</button>
+    <button @click="globalContext.diminishNotificationsCount">Diminish</button>
   </div>
 </template>
 
