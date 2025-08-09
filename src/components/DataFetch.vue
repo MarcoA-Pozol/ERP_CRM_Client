@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import axios from "axios";
 import { useGlobalStore } from '../stores/global';
 
@@ -8,6 +8,21 @@ const loading = ref(true);
 const error = ref<string | null>(null);
 const imageURL = ref("");
 const globalContext = useGlobalStore();
+
+watch(
+  () => globalContext.notificationsCount, async() => {
+    try {
+      const response = await axios.get("https://dog.ceo/api/breeds/image/random");
+      data.value = response.data;
+      imageURL.value = response.data.message;
+    } catch (err) {
+      error.value = "Failed to fetch data";
+    } finally {
+      loading.value = false;
+    }
+  }
+)
+
 
 onMounted(async () => {
   try {
